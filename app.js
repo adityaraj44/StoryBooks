@@ -20,10 +20,17 @@ connectDB();
 
 const app = express();
 
+// body parser
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
 // morgan
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
+
+// ejs helper
+const { formatDate } = require("./helper/ejs");
 
 // view engine
 app.use(expressEjsLayouts);
@@ -44,12 +51,19 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+// set global variable
+app.use((req, res, next) => {
+  res.locals.user = req.user || null;
+  next();
+});
+
 // static folder
 app.use(express.static(`${__dirname}/public`));
 
 // routes
 app.use("/", require("./routes/index"));
 app.use("/auth", require("./routes/auth"));
+app.use("/stories", require("./routes/stories"));
 
 const port = process.env.PORT || 3000;
 
