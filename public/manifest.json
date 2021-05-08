@@ -1,0 +1,18 @@
+{
+    "short_name": "Story Books",
+    "name": "Story Books - Snowclub Projects",
+    "icons": [
+      {
+        "src": "https://cdn.iconscout.com/icon/premium/png-512-thumb/storybook-4-1116281.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ],
+    "start_url": "/",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "description":"ChatCord",
+    "theme_color": "#000",
+    "background_color": "#000"
+  }
+  
